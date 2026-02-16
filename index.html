@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Boxicons -->
+	<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+	<!-- FontAwesome -->
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	/>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css" />
+
+	<title>UPMRC Admin Dashboard</title>
+</head>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class="fa-solid fa-subway"></i>
+			<span class="text">Super Admin Pannel</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class="bx bxs-dashboard"></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="account-info-btn">
+					<i class="fa-solid fa-user"> </i>
+					<span class="text">Account Info</span>
+				</a>
+			</li>
+			<li>
+				<a href="equipment-details.html" id="equipment-details-btn">
+					<i class="bx bxs-doughnut-chart"></i>
+					<span class="text">Equipment Details</span>
+				</a>
+			</li>
+			<li>
+				<a href="ticket-raising.html">
+					<i class="bx bxs-message-dots"></i>
+					<span class="text">Ticket Raising</span>
+				</a>
+			</li>
+			<li>
+				<a href="all_users.html" id="all-users-btn">
+					<i class="fa-solid fa-user"> </i>
+					<span class="text">All Users</span>
+				</a>
+			</li>
+			<li>
+				<a href="all_admin.html" id="all-admin-btn">
+					<i class="fa-solid fa-user-gear"></i>
+					<span class="text">All Admin</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="#">
+					<i class="bx bxs-group"></i>
+					<span class="text">More</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class="bx bxs-cog"></i>
+					<span class="text">Settings</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="#" class="logout">
+					<i class="bx bxs-log-out-circle"></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<section id="all-admin-section" class="ticket-section" style="display: none">
+		<div class="ticket-header program">
+			<i class="fa-solid fa-user-gear"></i>
+			<h2>All Admin Users</h2>
+		</div>
+		<table class="ticket-table">
+			<thead>
+				<tr>
+					<th>Admin ID</th>
+					<th>Admin Name</th>
+					<th>Role</th>
+					<th>Department</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ADM-001</td>
+					<td>John Doe</td>
+					<td>Super Admin</td>
+					<td>IT Department</td>
+				</tr>
+				<tr>
+					<td>ADM-002</td>
+					<td>Jane Smith</td>
+					<td>Admin</td>
+					<td>Operations</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="back-btn" onclick="showDashboard()">
+			<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+		</button>
+	</section>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class="bx bx-menu"></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." />
+					<button type="submit" class="search-btn">
+						<i class="bx bx-search"></i>
+					</button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden />
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class="bx bxs-bell"></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="people.png" />
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="maths-box-grid">
+				<!-- Overview Section -->
+				<div class="maths-box-container scrollable">
+					<section class="overview-section">
+						<h2>Overview</h2>
+						<div class="overview-cards">
+							<a href="pending.html" class="overview-card" id="pending-card" style="cursor:pointer">
+								<i class="fa-solid fa-hourglass-half card-icon pending"></i>
+								<div>
+									<h3>Pending</h3>
+									<p>22</p>
+								</div>
+							</a>
+							<a href="program.html" class="overview-card" id="program-card" style="cursor:pointer">
+								<i class="fa-solid fa-list-check card-icon program"></i>
+								<div>
+									<h3>Program</h3>
+									<p>20</p>
+								</div>
+							</a>
+							<a href="closed.html" class="overview-card" id="closed-card" style="cursor:pointer">
+								<i class="fa-solid fa-circle-check card-icon closed"></i>
+								<div>
+									<h3>Closed</h3>
+									<p>240</p>
+								</div>
+							</a>
+							<a href="resolve.html" class="overview-card" id="resolve-card" style="cursor:pointer">
+								<i class="fa-solid fa-check-double card-icon resolve"></i>
+								<div>
+									<h3>Resolve</h3>
+									<p>50</p>
+								</div>
+							</a>
+						</div>
+					</section>
+				</div>
+
+				<!-- Not Assigned Work Section -->
+				<div class="maths-box-container scrollable">
+					<section class="not-assigned-section">
+						<h2>
+							<i class="fa-solid fa-user-clock"></i> Not Assigned Work
+						</h2>
+						<table class="not-assigned-table">
+							<thead>
+								<tr>
+									<th><i class="fa-solid fa-id-badge"></i> Work ID</th>
+									<th><i class="fa-solid fa-calendar-day"></i> Date</th>
+									<th><i class="fa-solid fa-file-lines"></i> Description</th>
+									<th><i class="fa-solid fa-exclamation-circle"></i> Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>NA-101</td>
+									<td>10-06-2025</td>
+									<td>Prepare monthly report</td>
+									<td><span class="status not-assigned">Not Assigned</span></td>
+								</tr>
+								<tr>
+									<td>NA-102</td>
+									<td>12-06-2025</td>
+									<td>Update client database</td>
+									<td><span class="status not-assigned">Not Assigned</span></td>
+								</tr>
+								<tr>
+									<td>NA-103</td>
+									<td>15-06-2025</td>
+									<td>System maintenance</td>
+									<td><span class="status not-assigned">Not Assigned</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+
+				<!-- Merged Graph & Comment Section -->
+				<div class="maths-box-container maths-box-merged" style="grid-column: span 2">
+					<section class="work-status-graph-section">
+						<h2>
+							<i class="fa-solid fa-chart-pie" style="color: var(--blue)"></i>
+							Work Status Overview
+						</h2>
+						<canvas id="workStatusPie" width="400" height="400"></canvas>
+					</section>
+					<section class="comment-section">
+						<h3>
+							<i class="fa-solid fa-comments" style="color: var(--blue)"></i>
+							Comments
+						</h3>
+						<textarea placeholder="Add your comment here..."></textarea>
+						<button>
+							<i class="fa-solid fa-paper-plane"></i> Submit
+						</button>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<!-- Ticket Sections for each status -->
+		<section id="pending-section" class="ticket-section" style="display: none">
+			<div class="ticket-header pending">
+				<i class="fa-solid fa-hourglass-half"></i>
+				<h2>Pending Tickets</h2>
+			</div>
+			<table class="ticket-table">
+				<thead>
+					<tr>
+						<th>Ticket ID</th>
+						<th>Ticket Name</th>
+						<th>Program</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>P-101</td>
+						<td>Database Migration</td>
+						<td>IT Infrastructure</td>
+					</tr>
+					<tr>
+						<td>P-102</td>
+						<td>UI Bug Fix</td>
+						<td>Frontend</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="back-btn" onclick="showDashboard()">
+				<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+			</button>
+		</section>
+
+		<section id="program-section" class="ticket-section" style="display: none">
+			<div class="ticket-header program">
+				<i class="fa-solid fa-list-check"></i>
+				<h2>Program Tickets</h2>
+			</div>
+			<table class="ticket-table">
+				<thead>
+					<tr>
+						<th>Ticket ID</th>
+						<th>Ticket Name</th>
+						<th>Program</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>PR-201</td>
+						<td>Feature Development</td>
+						<td>Software</td>
+					</tr>
+					<tr>
+						<td>PR-202</td>
+						<td>Code Review</td>
+						<td>Software</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="back-btn" onclick="showDashboard()">
+				<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+			</button>
+		</section>
+
+		<section id="closed-section" class="ticket-section" style="display: none">
+			<div class="ticket-header closed">
+				<i class="fa-solid fa-circle-check"></i>
+				<h2>Closed Tickets</h2>
+			</div>
+			<table class="ticket-table">
+				<thead>
+					<tr>
+						<th>Ticket ID</th>
+						<th>Ticket Name</th>
+						<th>Program</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>CL-301</td>
+						<td>Server Upgrade</td>
+						<td>IT Infrastructure</td>
+					</tr>
+					<tr>
+						<td>CL-302</td>
+						<td>Security Patch</td>
+						<td>IT Infrastructure</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="back-btn" onclick="showDashboard()">
+				<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+			</button>
+		</section>
+
+		<section id="resolve-section" class="ticket-section" style="display: none">
+			<div class="ticket-header resolve">
+				<i class="fa-solid fa-check-double"></i>
+				<h2>Resolve Tickets</h2>
+			</div>
+			<table class="ticket-table">
+				<thead>
+					<tr>
+						<th>Ticket ID</th>
+						<th>Ticket Name</th>
+						<th>Program</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>RS-401</td>
+						<td>Bug Fixes</td>
+						<td>Frontend</td>
+					</tr>
+					<tr>
+						<td>RS-402</td>
+						<td>Performance Optimization</td>
+						<td>Frontend</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="back-btn" onclick="showDashboard()">
+				<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+			</button>
+		</section>
+
+		<!-- Account Info Page -->
+		<section
+			id="account-info-section"
+			style="display: none"
+			class="account-info-box"
+		>
+			<div class="user-id-row">
+				<span class="user-id-label"
+					><i class="fa-solid fa-user-shield"></i> User ID:</span
+				>
+				<span class="user-id-value">90009</span>
+			</div>
+			<div class="info-list">
+				<div class="info-item">
+					<i class="fa-solid fa-id-badge"></i>
+					<span class="info-label">Employee ID:</span>
+					<span class="info-value">EMP90009</span>
+				</div>
+				<div class="info-item">
+					<i class="fa-solid fa-envelope"></i>
+					<span class="info-label">Email:</span>
+					<span class="info-value">EMP90009@gmail.com</span>
+				</div>
+				<div class="info-item">
+					<i class="fa-solid fa-user-tag"></i>
+					<span class="info-label">Role:</span>
+					<span class="info-value">User</span>
+				</div>
+				<div class="info-item">
+					<i class="fa-solid fa-building"></i>
+					<span class="info-label">Department:</span>
+					<span class="info-value">IT</span>
+				</div>
+				<div class="info-item">
+					<i class="fa-solid fa-location-dot"></i>
+					<span class="info-label">Office location:</span>
+					<span class="info-value">UPMRC HQ Lucknow</span>
+				</div>
+			</div>
+			<button id="back-to-dashboard" class="back-btn">
+				<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+			</button>
+		</section>
+
+		<!-- Ticket Raising Form Section -->
+		<section
+			id="ticket-raising-section"
+			style="display: none"
+			class="account-info-box"
+		>
+			<h2>
+				<i class="fa-solid fa-ticket"></i> Ticket Raising Form
+			</h2>
+			<form id="ticket-raising-form" style="width: 100%; margin-top: 20px;">
+				<div class="info-list">
+					<div class="info-item">
+						<label for="issue-no" class="info-label">Issue No.</label>
+						<input type="text" id="issue-no" name="issue-no" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;" />
+					</div>
+					<div class="info-item">
+						<label for="issue-name" class="info-label">Issue Name</label>
+						<input type="text" id="issue-name" name="issue-name" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;" />
+					</div>
+					<div class="info-item">
+						<label for="description" class="info-label">Description</label>
+						<textarea id="description" name="description" rows="3" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+					</div>
+					<div class="info-item">
+						<label for="device-type" class="info-label">Device Type</label>
+						<select id="device-type" name="device-type" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+							<option value="" disabled selected>Select device type</option>
+							<option value="mobile">Mobile</option>
+							<option value="laptop">Laptop</option>
+							<option value="desktop">Desktop</option>
+							<option value="printer">Printer</option>
+							<option value="display/tv">Display/T.V</option>
+							<option value="network/internet">Network/Internet</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div class="info-item">
+						<label for="status" class="info-label">Status</label>
+						<select id="status" name="status" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+							<option value="" disabled selected>Select status</option>
+							<option value="complete">Complete</option>
+							<option value="pending">Pending</option>
+							<option value="closed">Closed</option>
+							<option value="not-assigned">Not Assigned</option>
+						</select>
+					</div>
+					<div class="info-item">
+						<label for="assigned-to" class="info-label">Assigned To</label>
+						<select id="assigned-to" name="assigned-to" required style="flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+							<option value="" disabled selected>Select assignee</option>
+							<option value="admin">Admin</option>
+							<option value="super-admin">Super Admin</option>
+						</select>
+					</div>
+				</div>
+				<button type="submit" class="back-btn" style="margin-top: 20px;">
+					<i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+				</button>
+			</form>
+		</section>
+	</section>
+	<!-- CONTENT -->
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
